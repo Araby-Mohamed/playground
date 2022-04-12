@@ -2,13 +2,21 @@
 // This class file to define all general functions
 namespace App\Helpers;
 
+use App\Models\Setting;
+
 class MainHelper {
 
     protected static $lowerLimit = 70;
     protected static $upperLimit = 255;
     protected static $colorGap = 20;
     protected static $generated = array();
-    
+
+    public static function settings()
+    {
+       $settings = Setting::first();
+        return $settings;
+    }
+
     public static function notify_user(
         $options=[]
     ){
@@ -33,7 +41,7 @@ class MainHelper {
             );
         }
     }
-    
+
     public static function make_error_report(
         $options=[]
     ){
@@ -56,27 +64,28 @@ class MainHelper {
     public static function binaryToString($binary)
     {
         $binaries = explode(' ', $binary);
-     
+
         $string = null;
         foreach ($binaries as $binary) {
             $string .= pack('H*', dechex(bindec($binary)));
         }
-     
-        return $string;    
+
+        return $string;
     }
+
 
     public static function focus_urls($string)
     {
          $url_regex = '~(http|ftp)s?://[a-z0-9.-]+\.[a-z]{2,7}(/\S*)?~i';
          return preg_replace($url_regex, " <a href='$0' target='_blank' rel='nofollow' style='font-family: inherit;'>$0</a> ",urldecode(htmlspecialchars($string)));
     }
-    
+
     public static function slug($string){
-        $t = $string; 
+        $t = $string;
         $specChars = array(
             ' ' => '-',    '!' => '',    '"' => '',
             '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '','&nbsp;' => '', 
+            '&amp;' => '','&nbsp;' => '',
             '\'' => '',   '(' => '',
             ')' => '',    '*' => '',    '+' => '',
             ',' => '',    '₹' => '',    '.' => '',
@@ -87,15 +96,15 @@ class MainHelper {
             '_' => '',    '`' => '',    '{' => '',
             '|' => '',    '}' => '',    '~' => '',
             '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',    
-        ); 
+            '/' => '',    '--' => '-',   '/_' => '-',
+        );
         foreach ($specChars as $k => $v) {
             $t = str_replace($k, $v, $t);
         }
- 
+
         return substr($t,0,230);
     }
-    
+
 
 
 

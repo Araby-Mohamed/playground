@@ -84,7 +84,6 @@
 </div>
 @push('scripts')
     <script>
-        var type;
         $(document).ready(function () {
             $(document).on('keyup', '#amount', function () {
                 //To View Updated remain value afer pay on view

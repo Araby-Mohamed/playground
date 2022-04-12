@@ -46,68 +46,40 @@ class SettingController extends Controller
             'footer_code'=>$request->footer_code,
             'robots_txt'=>$request->robots_txt,
         ]);
-        
+
         if($request->hasFile('website_logo')){
-            $file = $this->store_file([
-                'source'=>$request->website_logo,
-                'validation'=>"image",
-                'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
-                'user_id'=>\Auth::user()->id,
-                'resize'=>null,
-                'small_path'=>'small/',
-                'visibility'=>'PUBLIC',
-                'file_system_type'=>env('FILESYSTEM_DRIVER','local'),
-                'compress'=>'auto'
-            ])['filename'];
-            \App\Models\Setting::query()->update(['website_logo'=>$file]);
+            $file = $request->file('website_logo');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/setting'), $fileNewName);
+            \App\Models\Setting::query()->update(['website_logo'=>$fileNewName]);
         }
         if($request->hasFile('website_wide_logo')){
-            $file = $this->store_file([
-                'source'=>$request->website_wide_logo,
-                'validation'=>"image",
-                'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
-                'user_id'=>\Auth::user()->id,
-                'resize'=>null,
-                'small_path'=>'small/',
-                'visibility'=>'PUBLIC',
-                'file_system_type'=>env('FILESYSTEM_DRIVER','local'),
-                'compress'=>'auto'
-            ])['filename'];
-            \App\Models\Setting::query()->update(['website_wide_logo'=>$file]);
+            $file = $request->file('website_wide_logo');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/setting'), $fileNewName);
+            \App\Models\Setting::query()->update(['website_wide_logo'=>$fileNewName]);
         }
         if($request->hasFile('website_icon')){
-            $file = $this->store_file([
-                'source'=>$request->website_icon,
-                'validation'=>"image",
-                'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
-                'user_id'=>\Auth::user()->id,
-                'resize'=>[500,1000],
-                'small_path'=>'small/',
-                'visibility'=>'PUBLIC',
-                'file_system_type'=>env('FILESYSTEM_DRIVER','local'),
-                'compress'=>'auto'
-            ])['filename'];
-            \App\Models\Setting::query()->update(['website_icon'=>$file]);
+            $file = $request->file('website_icon');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/setting'), $fileNewName);
+            \App\Models\Setting::query()->update(['website_icon'=>$fileNewName]);
         }
-        
+
 
         if($request->hasFile('website_cover')){
-            $file = $this->store_file([
-                'source'=>$request->website_cover,
-                'validation'=>"image",
-                'path_to_save'=>'/uploads/website/',
-                'type'=>'IMAGE', 
-                'user_id'=>\Auth::user()->id,
-                'resize'=>[500,1000],
-                'small_path'=>'small/',
-                'visibility'=>'PUBLIC',
-                'file_system_type'=>env('FILESYSTEM_DRIVER','local'),
-                'compress'=>'auto'
-            ])['filename'];
-            \App\Models\Setting::query()->update(['website_cover'=>$file]);
+            $file = $request->file('website_cover');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/setting'), $fileNewName);
+            \App\Models\Setting::query()->update(['website_cover'=>$fileNewName]);
         }
         flash()->success('تم تحديث الإعدادات بنجاح','عملية ناجحة');
         return redirect()->back();

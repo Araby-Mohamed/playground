@@ -14,25 +14,25 @@ class Setting extends Model
         if($this->website_logo==null)
             return env('DEFAULT_IMAGE_LOGO');
         else
-            return env('STORAGE_URL').'/uploads/website/'.$this->website_logo;
+            return asset('uploads/setting') . '/' . $this->website_logo;
     }
     public function website_cover(){
         if($this->website_cover==null)
             return env('DEFAULT_IMAGE_COVER');
         else
-            return env('STORAGE_URL').'/uploads/website/'.$this->website_cover;
+            return asset('uploads/setting') . '/' . $this->website_cover;
     }
     public function website_wide_logo(){
         if($this->website_wide_logo==null)
             return env('DEFAULT_IMAGE_COVER');
         else
-            return env('STORAGE_URL').'/uploads/website/'.$this->website_wide_logo;
+            return asset('uploads/setting') . '/' . $this->website_wide_logo;
     }
     public function website_icon(){
         if($this->website_icon==null)
             return env('DEFAULT_IMAGE_FAVICON');
         else
-            return env('STORAGE_URL').'/uploads/website/'.$this->website_icon;
+            return asset('uploads/setting') . '/' . $this->website_icon;
     }
     public function main_color(){
         if($this->main_color==null)
@@ -53,6 +53,6 @@ class Setting extends Model
             return $this->phone;
     }
 
-    
+
 
 }

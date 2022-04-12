@@ -111,7 +111,7 @@
                 </div>
             </div>
         <div class="col-12 px-0 py-5 text-center justify-content-center align-items-center ">
-            <img src="{{asset('/images/logo.jpg')}}" style="width: 110px;height: 110px;color: #fff;border-radius: 50%" class="d-inline-block">
+            <img src="{{settings()->website_logo()}}" style="width: 180px;height: 60px;" class="d-inline-block">
             </div>
             <div class="col-12 px-0">
                 <div class="col-12 px-0">

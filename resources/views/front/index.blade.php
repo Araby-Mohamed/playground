@@ -23,7 +23,7 @@
         <div class="container">
             <nav>
                 <a class="nav-logo" href="#">
-                    <img src="{{url('/')}}/new_front/img/logo.png" alt=""/>
+                    <img src="{{settings()->website_logo()}}" alt=""/>
                 </a>
                 <div class="nav-parent">
                     <ul class="nav-menu list-unstyled text-capitalize align-items-lg-center">
@@ -587,8 +587,13 @@
         </div>
     </div>
 </div>
-<script>
-    var type;
+
+<script src="{{url('/')}}/new_front/js/libs/jquery-3.6.0.min.js"></script>
+<script src="{{url('/')}}/new_front/js/libs/flickity.pkgd.min.js"></script>
+<script src="{{url('/')}}/new_front/js/libs/bootstrap.bundle.min.js"></script>
+<script src="{{url('/')}}/new_front/js/main.min.js"></script>
+<script src="{{url('/')}}/new_front/js/carousel-ar.min.js"></script>
+<script type="text/javascript">
     $(document).ready(function () {
         $(document).on('keyup', '#amount', function () {
             //To View Updated remain value afer pay on view
@@ -606,11 +611,6 @@
         });
     });
 </script>
-<script src="{{url('/')}}/new_front/js/libs/jquery-3.6.0.min.js"></script>
-<script src="{{url('/')}}/new_front/js/libs/flickity.pkgd.min.js"></script>
-<script src="{{url('/')}}/new_front/js/libs/bootstrap.bundle.min.js"></script>
-<script src="{{url('/')}}/new_front/js/main.min.js"></script>
-<script src="{{url('/')}}/new_front/js/carousel-ar.min.js"></script>
 </body>
 <!-- Mirrored from golatoapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Mar 2022 15:38:51 GMT -->
 </html>
