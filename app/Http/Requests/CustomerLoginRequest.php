@@ -26,21 +26,8 @@ class CustomerLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-                'string',
-                'max:191',
-                Rule::unique('venues', 'name')->ignore($this->route('venue'))
-            ],
-            'address'=>"nullable|string|max:191",
-            'details'=>"nullable|string",
-            'image' => [
-                'nullable',
-                'mimes:jpeg,jpg,png',
-                Rule::requiredIf(function () {
-                    return Request::routeIs('admin.venues.store');
-                })
-            ],
+            'phone'=>"required|string",
+            'password'=>"required|string",
         ];
     }
 }

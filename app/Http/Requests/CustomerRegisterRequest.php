@@ -30,12 +30,10 @@ class CustomerRegisterRequest extends FormRequest
                 'required',
                 'string',
                 'max:191',
-                Rule::unique('venues', 'name')->ignore($this->route('venue'))
             ],
-            'phone'=>"nullable|string|max:191",
-            'email'=>"nullable|string",
-            'password'=>"nullable|string",
-
+            'phone'=>"required|string|max:191|unique:customers,phone",
+            'email'=>"required|email|unique:customers,email",
+            'password'=>"required|min:8|max:190|confirmed",
         ];
     }
 }

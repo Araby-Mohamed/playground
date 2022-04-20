@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <!-- Mirrored from golatoapp.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Mar 2022 15:38:15 GMT -->
 <!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/><!-- /Added by HTTrack -->
@@ -15,23 +14,22 @@
           href="{{url('/')}}/new_front/unpkg.com/flickity%402.3.0/dist/flickity.min.css"/>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/main.min.css"/>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/main-ar.min.css"/>
-
 </head>
 <body>
 <div class="overflow-hidden">
     <div class="navbar-up">
         <div class="container">
             <nav>
-                <a class="nav-logo" href="#">
+                <a class="nav-logo" href="{{route('home')}}">
                     <img src="{{settings()->website_logo()}}" alt=""/>
                 </a>
                 <div class="nav-parent">
                     <ul class="nav-menu list-unstyled text-capitalize align-items-lg-center">
                         <li class="nav-item order-1">
-                            <a class="nav-link" href="#" data-scroll="#home">الرئيسية</a>
+                            <a class="nav-link" href="{{route('home')}}">الرئيسية</a>
                         </li>
                         <li class="nav-item order-4">
-                            <a class="nav-link" href="#" data-scroll="#about-us">عن قولاتو</a>
+                            <a class="nav-link" href="{{url('about')}}">عن قولاتو</a>
                         </li>
                         <li class="nav-item order-2">
                             <a class="nav-link" href="#" data-scroll="#playgrounds">ملاعب</a>
@@ -42,6 +40,15 @@
                         <li class="nav-item order-5">
                             <a class="nav-link" href="#" data-scroll="#contacts">تواصل معنا</a>
                         </li>
+
+                        @if(auth()->guard('customer')->check())
+                            <li class="nav-item order-5">
+                                <a class="nav-link" href="{{route('customer.my_reservations')}}">حجوزاتي</a>
+                            </li>
+                            <li class="nav-item order-5">
+                                <a class="nav-link" href="{{route('customer.logout')}}">تسجيل الخروج</a>
+                            </li>
+                        @endif
                         <li class="nav-item order-last">
                             <button type="button"
                                     class="btn btn-primary"
@@ -80,6 +87,44 @@
         </div>
     @endif
 @yield('content')
+    <div class="contact-us">
+        <div class="container">
+            <div class="row gy-lg-0 gy-5 px-5 px-sm-2">
+                <div class="col-lg-3 col-sm-6">
+                    <h2>العنوان</h2>
+                    <ul class="list-unstyled">
+                        <li>المملكة العربية السعودية - الرياض</li>
+                        <li>
+                            <bdi>+966563319949</bdi>
+                        </li>
+                        <li>
+                            <bdi>info@GolatoApp.com</bdi>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h2>ساعات العمل</h2>
+                    <ul class="list-unstyled">
+                        <li>طوال الأسبوع</li>
+                        <li>24 ساعة</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 ms-lg-auto">
+                    <h2>كن على تواصل</h2>
+                    <p> تجدنا في وسائل التواصل الإجتماعي</p>
+                    <ul class="social-media list-unstyled">
+                        <li>
+                            <a href="https://twitter.com/golatoapp"> <img src="{{url('/')}}/new_front/img/twitter.svg"
+                                                                          alt=""/></a>
+                        </li>
+                    <!--<li>
+                            <a href="#"> <img src="{{url('/')}}/new_front/img/facebook.svg" alt="" /></a>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="footer">
         <div class="container">
             <div class="row align-items-center justify-content-between">
@@ -135,7 +180,7 @@
                 <div class="sign-in">
                     <i class="far fa-user"></i>
                     <h3>تسجيل حجز ملعب</h3>
-                    <form method="POST" action="{{route('front.make_reservation')}}">
+                    <form method="POST" action="{{route('customer.make_reservation')}}">
                         @csrf
                         <div class="form-floating">
                             <input type="text" class="form-control" id="name" placeholder="اسم الحجز" required
@@ -184,6 +229,7 @@
                         {{--                        </select>--}}
                         {{--                        <label for="phone" class="form-label require">الملعب</label>--}}
                         {{--                    </div>--}}
+                        @php $venues = \App\Models\Venue::all(); @endphp
                         <h3>اختر ملعب</h3>
                         <div class="form-floating row">
                             @foreach($venues as  $venue)
@@ -213,11 +259,11 @@
                         <div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>
                             </ul></div>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required data-val="true" data-val-required="The PhoneNumber field is required." name="PhoneNumber" value="" />
+                            <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required data-val="true" data-val-required="The PhoneNumber field is required." name="phone" value="" />
                             <label for="phone" class="form-label require">رقم الجوال</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="password" type="password" placeholder="كلمة المرور" required data-val="true" data-val-required="The Password field is required." name="Password" />
+                            <input class="form-control" id="password" type="password" placeholder="كلمة المرور" required data-val="true" data-val-required="The Password field is required." name="password" />
                             <label for="password" class="form-label require">كلمة المرور</label>
                         </div>
                         <button type="submit">تسجيل الدخول</button>

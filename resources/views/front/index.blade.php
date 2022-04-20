@@ -2,23 +2,6 @@
 @section('content')
     <div class="header" id="home">
         <div class="container">
-            @if(flash()->message)
-                <div
-                    style="position: absolute;z-index: 4444444444444;left: 35px;top: 80px;max-width: calc(100% - 70px);padding: 16px 22px;border-radius: 7px;overflow: hidden;width: 273px;border-right: 8px solid #374b52;background: #2196f3;color: #fff;cursor: pointer;"
-                    onclick="$(this).slideUp();">
-                    <span class="fas fa-info-circle"></span> {{ flash()->message }}
-                </div>
-            @endif
-            @if ($errors->any())
-                <div
-                    style="position: absolute;z-index: 4444444444444;left: 35px;top: 80px;max-width: calc(100% - 70px);padding: 16px 22px;border-radius: 7px;overflow: hidden;width: 273px;border-right: 8px solid #374b52;background: #FF0000;color: #fff;cursor: pointer;"
-                    onclick="$(this).slideUp();">
-                    <span class="fas fa-info-circle"></span>
-                    @foreach ($errors->all() as  $value)
-                        {{ $value }} <br>
-                    @endforeach
-                </div>
-            @endif
             <div class="row gx-0">
                 <div class="col-lg-8">
                     <div class="info">
@@ -377,44 +360,6 @@
                         <li class="stad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل ملعبك</a></li>
                         <li class="acad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل أكاديميتك </a>
                         </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="contact-us">
-        <div class="container">
-            <div class="row gy-lg-0 gy-5 px-5 px-sm-2">
-                <div class="col-lg-3 col-sm-6">
-                    <h2>العنوان</h2>
-                    <ul class="list-unstyled">
-                        <li>المملكة العربية السعودية - الرياض</li>
-                        <li>
-                            <bdi>+966563319949</bdi>
-                        </li>
-                        <li>
-                            <bdi>info@GolatoApp.com</bdi>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <h2>ساعات العمل</h2>
-                    <ul class="list-unstyled">
-                        <li>طوال الأسبوع</li>
-                        <li>24 ساعة</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 ms-lg-auto">
-                    <h2>كن على تواصل</h2>
-                    <p> تجدنا في وسائل التواصل الإجتماعي</p>
-                    <ul class="social-media list-unstyled">
-                        <li>
-                            <a href="https://twitter.com/golatoapp"> <img src="{{url('/')}}/new_front/img/twitter.svg"
-                                                                          alt=""/></a>
-                        </li>
-                    <!--<li>
-                            <a href="#"> <img src="{{url('/')}}/new_front/img/facebook.svg" alt="" /></a>
-                        </li>-->
                     </ul>
                 </div>
             </div>
