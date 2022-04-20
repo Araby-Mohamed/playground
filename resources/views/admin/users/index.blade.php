@@ -49,7 +49,7 @@
 							@if(auth()->user()->has_access_to('update',$user))
 							<a href="{{route('admin.users.edit',$user)}}">
 							<span class="btn  btn-outline-info btn-sm font-1 mx-1">
-								<span class="fas fa-wrench "></span> تحكم
+								<span class="fas fa-wrench "></span> تعديل
 							</span>
 							</a>
 							@endif

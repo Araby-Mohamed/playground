@@ -16,8 +16,9 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RedirectionController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FrontController;
 use App\Http\Controllers\TrafficsController;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\LoginController;
 
 
 
@@ -26,9 +27,7 @@ use App\Http\Controllers\TrafficsController;
 
 Auth::routes();
 //Route::get('/', function () {return view('front.index');})->name('home');
-Route::get('/',[FrontController::class,'index'])->name('home');
-Route::post('/front/make_reservation',[FrontController::class,'make_reservation'])->name('front.make_reservation');
-Route::get('make_reservation',[TrafficsController::class,'index'])->name('customer.make_reservation');
+
 
 Route::prefix('admin')->middleware(['auth','CheckRole:ADMIN','ActiveAccount'])->name('admin.')->group(function () {
     Route::get('/',[AdminController::class,'index'])->name('index');
@@ -79,7 +78,7 @@ Route::get('blocked',[HelperController::class,'blocked_user'])->name('blocked');
 Route::get('robots.txt',[HelperController::class,'robots']);
 Route::get('manifest.json',[HelperController::class,'manifest']);
 Route::get('sitemap.xml',[SiteMapController::class,'sitemap']);
-Route::get('sitemaps/links','SiteMapController@custom_links');
+Route::get('sitemaps/links',[SiteMapController::class,'custom_links']);
 Route::get('sitemaps/{name}/{page}/sitemap.xml',[SiteMapController::class,'viewer']);
 
 
@@ -88,6 +87,14 @@ Route::view('about','front.pages.about');
 Route::view('privacy','front.pages.privacy');
 Route::view('terms','front.pages.terms');
 Route::view('contact','front.pages.contact');
-Route::get('article/{article}',[FrontController::class,'article'])->name('article.show');
-Route::get('blog',[FrontController::class,'blog'])->name('blog');
-Route::post('contact',[FrontController::class,'contact_post'])->name('contact-post');
+
+Route::get('article/{article}',[HomeController::class,'article'])->name('article.show');
+Route::get('blog',[HomeController::class,'blog'])->name('blog');
+Route::post('contact',[HomeController::class,'contact_post'])->name('contact-post');
+
+//front page
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/customer/login',[LoginController::class,'login'])->name('customer.login');
+Route::get('/customer/register',[LoginController::class,'register'])->name('customer.register');
+Route::post('/front/make_reservation',[HomeController::class,'make_reservation'])->name('front.make_reservation');
+Route::get('make_reservation',[TrafficsController::class,'index'])->name('customer.make_reservation');

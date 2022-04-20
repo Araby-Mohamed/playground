@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VenueRequest;
 use App\Http\Resources\StoreVenueRequest;
 use App\Models\Contact;
 
@@ -37,13 +38,17 @@ class VenuesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VenueRequest $request)
     {
-        $data = $request->all();
-        $request->validate([
-            'name'=>"required|max:191|unique:venues,name",
-            'address'=>"nullable|max:191",
-        ]);
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/playgrounds'), $fileNewName);
+            $data['image'] = $fileNewName;
+        }
         Venue::create($data);
         flash()->success('تم إضافة الملعب بنجاح','عملية ناجحة');
         return redirect()->route('admin.venues.index');
@@ -79,13 +84,17 @@ class VenuesController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(VenueRequest $request,$id)
     {
-        $data = $request->all();
-        $request->validate([
-            'name'=>"required|max:191|unique:venues,name",
-            'address'=>"nullable|max:191",
-        ]);
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            // Move Image To Folder ..
+            $fileNewName = 'img_' . time() . '.' . $ext;
+            $file->move(public_path('/uploads/playgrounds'), $fileNewName);
+            $data['image'] = $fileNewName;
+        }
         Venue::findOrFail($id)->update($data);
         flash()->success('تم تعديل بيانات الملعب بنجاح','عملية ناجحة');
         return redirect()->route('admin.venues.index');

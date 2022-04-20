@@ -29,7 +29,7 @@
 			<table class="table table-bordered  table-hover">
 				<thead>
 					<tr>
-						<th>#</th>
+						<th>صورة الملعب</th>
 						<th>اسم الملعب</th>
 						<th>العنوان</th>
 						<th>تحكم</th>
@@ -38,14 +38,14 @@
 				<tbody>
 					@foreach($data as $category)
 					<tr>
-						<td>{{$category->id}}</td>
+                        <td><img style="width: 150px; height: 150px;" class="img-thumbnail" src="{{$category->image_path}}"></td>
 						<td>{{$category->name}}</td>
 						<td>{{$category->address}}</td>
 						<td style="width: 180px;">
 							@if(auth()->user()->has_access_to('update',$category))
 							<a href="{{route('admin.venues.edit',$category)}}">
-							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
-								<span class="fas fa-wrench "></span> تحكم
+							<span class="btn  btn-outline-info btn-sm font-1 mx-1">
+								<span class="fas fa-wrench "></span> تعديل
 							</span>
 							</a>
 							@endif

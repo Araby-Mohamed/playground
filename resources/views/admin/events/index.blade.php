@@ -67,19 +67,7 @@
 						<td>{{$category->remain}}</td>
 						<td>{{$category->start_time}}</td>
 						<td>{{ $category->venue->name ?? '' }}</td>
-                        <td>
-                            @if( $category->booking_status == 'pending')
-                                تحت المراجعة
-                            @elseif( $category->booking_status == 'accepted')
-                               تم الموافقة
-                            @elseif( $category->booking_status == 'rejected')
-                                تم الرفض
-                            @elseif( $category->booking_status == 'completed')
-                               حجز مكتمل
-                            @elseif( $category->booking_status == 'not_completed')
-                                الحجز لم يكتمل
-                            @endif
-                        </td>
+                        <td>{{$category->booking}}</td>
                         <td>
                             <div class="row">
                                 @if( $category->booking_status == 'pending')
@@ -123,8 +111,8 @@
 						<td style="width: 180px;">
 							@if(auth()->user()->has_access_to('update',$category))
 							<a href="{{route('admin.events.edit',$category)}}">
-							<span class="btn  btn-outline-success btn-sm font-1 mx-1">
-								<span class="fas fa-wrench "></span> تحكم
+							<span class="btn  btn-outline-info btn-sm font-1 mx-1">
+								<span class="fas fa-wrench "></span> تعديل
 							</span>
 							</a>
 							@endif

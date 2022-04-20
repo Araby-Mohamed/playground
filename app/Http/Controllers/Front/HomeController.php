@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationRequest;
 use App\Models\Event;
 use App\Models\Venue;
 use Carbon\Carbon;
@@ -10,26 +12,17 @@ use App\Models\Article;
 use App\Models\Contact;
 
 
-class FrontController extends Controller
+class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $venues = Venue::all()->pluck('name', 'id')->prepend('اختر الملعب', '');
+//        $venues = Venue::all()->pluck('name', 'id')->prepend('اختر الملعب', '');
+        $venues = Venue::all();
         return view('front.index',compact('venues'));
     }
-    public function make_reservation(Request $request)
+    public function make_reservation(ReservationRequest $request)
     {
-        $data = $request->all();
-
-        $request->validate([
-            'name' => "required|max:191|unique:events,name",
-            'phone' => "required|numeric",
-            'amount' => "required|numeric",
-            'deposit' => "required|numeric",
-            'remain' => "required|numeric",
-            'start_time' => "required|string",
-            'venue_id' => "required|exists:venues,id",
-        ]);
+        $data = $request->validated();
         $data['start_time'] = Carbon::parse($data['start_time'])->translatedFormat("Y-m-d H:i:s");
         $data['booking_status'] = 'pending';
         Event::create($data);

@@ -20,4 +20,14 @@ class Venue extends Model
     {
         return $this->hasMany(Event::class, 'venue_id', 'id')->sum('deposit');
     }
+
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
+    {
+        if (!empty($this->image)) {
+            return asset('uploads/playgrounds') . '/' . $this->image;
+        }
+        return asset('default.png');
+    }
 }

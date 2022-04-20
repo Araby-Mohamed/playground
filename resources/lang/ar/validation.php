@@ -130,4 +130,7 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
+    'attributes' =>[
+        'start_time'=>'وقت الحجز'
+    ],
 ];
