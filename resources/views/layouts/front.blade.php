@@ -21,7 +21,7 @@
         <div class="container">
             <nav>
                 <a class="nav-logo" href="{{route('home')}}">
-                    <img src="{{settings()->website_logo()}}" alt=""/>
+                    <img src="{{settings()->website_logo()}}" style="width: 170px;" alt=""/>
                 </a>
                 <div class="nav-parent">
                     <ul class="nav-menu list-unstyled text-capitalize align-items-lg-center">
