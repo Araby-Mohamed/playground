@@ -28,9 +28,9 @@ class ReservationRequest extends FormRequest
         return [
             'name' => "required|string|max:191",
             'phone' => "required|string|max:191",
-            'amount' => "required|numeric",
-            'deposit' => "required|numeric",
-            'remain' => "required|numeric",
+//            'amount' => "required|numeric",
+//            'deposit' => "required|numeric",
+//            'remain' => "required|numeric",
             'start_time' => "required|date|after:".$today,
             'venue_id' => "required|exists:venues,id",
         ];

@@ -91,12 +91,13 @@ Route::post('contact', [HomeController::class, 'contact_post'])->name('contact-p
 //front page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::prefix('customer')->middleware(['auth', 'CheckRole:ADMIN', 'ActiveAccount'])->name('customer.')->group(function () {
+Route::prefix('customer')->name('customer.')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/register', [LoginController::class, 'register'])->name('register');
     Route::post('/register', [LoginController::class, 'register_store'])->name('register.store');
-
-    Route::post('/make_reservation', [ReservationController::class, 'make_reservation'])->name('make_reservation');
-    Route::get('/my_reservations', [ReservationController::class, 'my_reservations'])->name('my_reservations');
+    Route::middleware(['customer'])->group(function () {
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+        Route::post('/make_reservation', [ReservationController::class, 'make_reservation'])->name('make_reservation');
+        Route::get('/my_reservations', [ReservationController::class, 'my_reservations'])->name('my_reservations');
+    });
 });

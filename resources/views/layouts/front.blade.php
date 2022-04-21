@@ -195,40 +195,12 @@
                             <label for="phone" class="form-label require">رقم الجوال</label>
                         </div>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="amount" readonly placeholder="مبلغ الحجز" required
-                                   data-val="true" data-val-required="The PhoneNumber field is required." name="amount"
-                                   value="100"/>
-                            <label for="phone" class="form-label require">مبلغ الحجز</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="deposit" placeholder="المدفوع" required
-                                   data-val="true" data-val-required="The PhoneNumber field is required." name="deposit"
-                                   value=""/>
-                            <label for="phone" class="form-label require">المدفوع</label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="remain" readonly placeholder="المتبقي" required
-                                   data-val="true" data-val-required="The PhoneNumber field is required." name="remain"
-                                   value="100"/>
-                            <label for="phone" class="form-label require">المتبقي</label>
-                        </div>
-                        <div class="form-floating">
                             <input type="datetime-local" class="form-control datetime" id="start_time"
                                    placeholder="وقت الحجز" required data-val="true"
                                    data-val-required="The PhoneNumber field is required." name="start_time" value=""/>
                             <label for="phone" class="form-label require">وقت الحجز</label>
                         </div>
-                        {{--                    <div class="form-floating">--}}
-                        {{--                        <select class="form-control select2" required name="venue_id" id="venue">--}}
-                        {{--                            @foreach($venues as $id => $venue)--}}
-                        {{--                                <option--}}
-                        {{--                                    value="{{ $id }}" {{ (isset($data) && $data->venue ? $data->venue->id : old('venue_id')) == $id ? 'selected' : '' }} >--}}
-                        {{--                                    {{ $venue }}--}}
-                        {{--                                </option>--}}
-                        {{--                            @endforeach--}}
-                        {{--                        </select>--}}
-                        {{--                        <label for="phone" class="form-label require">الملعب</label>--}}
-                        {{--                    </div>--}}
+                        <label for="phone" class="form-label require">مبلغ حجز الملعب : </label> <span style="color: green;">100</span>
                         @php $venues = \App\Models\Venue::all(); @endphp
                         <h3>اختر ملعب</h3>
                         <div class="form-floating row">
