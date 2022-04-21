@@ -87,6 +87,15 @@
 		 			</div>
 		 		</div>
 
+                <div class="col-12 px-0 d-flex mb-3 row pb-3">
+                    <div class="col-12 col-lg-3 px-2 text-lg-end pt-1 pb-3 pb-lg-0">
+                        مبلغ حجز الملعب
+                    </div>
+                    <div class="col-12 col-lg-9 px-2">
+                        <input type="number" min="0" step="any" name="reservation_price" class="form-control" value="{{$settings->reservation_price}}" >
+                    </div>
+                </div>
+
 
 		 		<div class="col-12 px-0 d-flex mb-3 row pb-3">
 		 			<div class="col-12 col-lg-3 px-2 text-lg-end pt-1 pb-3 pb-lg-0">

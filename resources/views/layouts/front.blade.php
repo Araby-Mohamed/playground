@@ -185,13 +185,13 @@
                         <div class="form-floating">
                             <input type="text" class="form-control" id="name" placeholder="اسم الحجز" required
                                    data-val="true" data-val-required="The PhoneNumber field is required." name="name"
-                                   value=""/>
+                                   value="{{auth()->guard('customer')->user()->name}}"/>
                             <label for="phone" class="form-label require">اسم الحجز</label>
                         </div>
                         <div class="form-floating">
                             <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required
                                    data-val="true" data-val-required="The PhoneNumber field is required." name="phone"
-                                   value=""/>
+                                   value="{{auth()->guard('customer')->user()->phone}}"/>
                             <label for="phone" class="form-label require">رقم الجوال</label>
                         </div>
                         <div class="form-floating">
@@ -200,7 +200,7 @@
                                    data-val-required="The PhoneNumber field is required." name="start_time" value=""/>
                             <label for="phone" class="form-label require">وقت الحجز</label>
                         </div>
-                        <label for="phone" class="form-label require">مبلغ حجز الملعب : </label> <span style="color: green;">100</span>
+                        <label for="phone" class="form-label require">مبلغ حجز الملعب : </label> <span style="color: green;">{{settings()->reservation_price}}</span>
                         @php $venues = \App\Models\Venue::all(); @endphp
                         <h3>اختر ملعب</h3>
                         <div class="form-floating row">

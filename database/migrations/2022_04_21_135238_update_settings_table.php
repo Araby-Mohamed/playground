@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('settings', function (Blueprint $table) {
+            $table->double('reservation_price')->default(0);
+        });
     }
 
     /**

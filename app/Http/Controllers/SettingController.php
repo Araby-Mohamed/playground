@@ -20,6 +20,7 @@ class SettingController extends Controller
             'address'=>$request->address,
             'website_bio'=>$request->website_bio,
             'contact_email'=>$request->contact_email,
+            'reservation_price'=>$request->reservation_price,
             'main_color'=>$request->main_color,
             'hover_color'=>$request->hover_color,
             'phone'=>$request->phone,

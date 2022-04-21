@@ -20,6 +20,8 @@ class ReservationController extends Controller
         $data['start_time'] = Carbon::parse($data['start_time'])->translatedFormat("Y-m-d H:i:s");
         $data['booking_status'] = 'pending';
         $data['customer_id'] = auth()->guard('customer')->user()->id;
+        $data['amount'] = settings()->reservation_price  ;
+        $data['remain'] = settings()->reservation_price  ;
         Event::create($data);
         flash()->success('تم إضافة الحجز بنجاح', 'عملية ناجحة');
         return redirect()->back();
