@@ -183,10 +183,10 @@
                     <form method="POST" action="{{route('customer.make_reservation')}}">
                         @csrf
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="name" placeholder="اسم الحجز" required
+                            <input type="text" class="form-control" id="name" placeholder="اسم العميل" required
                                    data-val="true" data-val-required="The PhoneNumber field is required." name="name"
                                    value="{{auth()->guard('customer')->user()->name}}"/>
-                            <label for="phone" class="form-label require">اسم الحجز</label>
+                            <label for="phone" class="form-label require">اسم العميل</label>
                         </div>
                         <div class="form-floating">
                             <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required
@@ -242,7 +242,6 @@
 
                         <div class="error"></div>
                     </form>
-                    <script src="js/libs/validform.min.js"></script>
                     <a href="{{route('customer.register')}}">انشاء حساب جديد</a>
                 </div>
             @endif

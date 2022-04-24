@@ -6,12 +6,13 @@
                 <div class="col-lg-8">
                     <div class="info">
                         <h2 style="text-align: center; color: green;">انشاء حساب جديد</h2>
+                        <br>
                         <form method="POST" action="{{route('customer.register.store')}}">
                             @csrf
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="name" placeholder="اسم المستخدم" required
                                        data-val="true" data-val-required="The PhoneNumber field is required."
-                                       name="name"
+                                       name="name" value="{{old('name')}}"
                                        maxlength="190"/>
                                 <label for="phone" class="form-label require">اسم المستخدم</label>
                             </div>
@@ -19,7 +20,7 @@
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required
                                        data-val="true" data-val-required="The PhoneNumber field is required."
-                                       name="phone"
+                                       name="phone" value="{{old('phone')}}"
                                        maxlength="190"/>
                                 <label for="phone" class="form-label require">رقم الجوال</label>
                             </div>
@@ -28,7 +29,7 @@
                                 <input type="email" class="form-control" id="email" placeholder="البريد الإلكتروني"
                                        required
                                        data-val="true" data-val-required="The PhoneNumber field is required."
-                                       name="email"
+                                       name="email" value="{{old('email')}}"
                                        maxlength="190"/>
                                 <label for="phone" class="form-label require">البريد الإلكتروني</label>
                             </div>

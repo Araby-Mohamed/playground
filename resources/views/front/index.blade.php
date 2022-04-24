@@ -16,8 +16,7 @@
                             وتختار الأقرب لك والأنسب موقع، وتقدر تستعرض الملعب وتشوف خدماته ومميزاته، وتشوف صوره وتحجزه
                             بكل موثوقية وضمان وبضغطة زر بس!
                         </p>
-                        <a href="get.html"> <img src="{{url('/')}}/new_front/img/Badge-gp.svg" alt=""/></a><a
-                            href="get.html"> <img src="{{url('/')}}/new_front/img/Badge-as.svg" alt=""/></a>
+
                     </div>
                 </div>
                 <div class="col-lg-4 text-center d-none d-lg-block">
