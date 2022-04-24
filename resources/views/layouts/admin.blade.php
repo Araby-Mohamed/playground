@@ -120,9 +120,6 @@
         </div>
         <div class="col-12 px-0 py-5 text-center justify-content-center align-items-center ">
             <img src="{{settings()->website_logo()}}" style="width: 180px;height: 80px;" class="d-inline-block">
-            <div class="col-12 px-0 mt-2" style="color: #fff">
-                مرحباً {{auth()->user()->name}}
-            </div>
         </div>
         <div class="col-12 px-0">
             <div class="col-12 px-0 aside-menu" style="height: calc(100vh - 250px);overflow: auto;">
