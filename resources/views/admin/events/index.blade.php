@@ -29,7 +29,6 @@
 			<table class="table table-bordered  table-hover">
 				<thead>
 					<tr>
-						<th>#</th>
                         <th>
                             اسم الحجز
                         </th>
@@ -60,7 +59,6 @@
 				<tbody>
 					@foreach($data as $category)
 					<tr>
-						<td>{{$category->id}}</td>
 						<td>{{$category->name}}</td>
 						<td>{{$category->amount}}</td>
 						<td>{{$category->deposit}}</td>
@@ -73,35 +71,35 @@
                                 @if( $category->booking_status == 'pending')
                                     <div class="col-md-6">
                                         <a href="{{route('admin.events.change_status',['status'=>'accepted','id'=>$category->id])}}"
-                                           class="btn btn-success">موافقة
+                                           class="btn btn-success btn-sm" title="موافقة">
                                             <i class="fa fa-check"> </i>
                                         </a>
                                     </div>
                                     <div class="col-md-6">
                                         <a href="{{route('admin.events.change_status',['status'=>'rejected','id'=>$category->id])}}"
-                                           class="btn btn-danger">
-                                            رفض
-                                            <i class="fa fa-close"> </i>
+                                           class="btn btn-danger btn-sm" title="رفض">
+
+                                            <i class="fa fa-ban"> </i>
                                         </a>
                                     </div>
                                 @elseif($category->booking_status  == 'accepted')
                                     <div class="col-md-6">
                                         <a href="{{route('admin.events.change_status',['status'=>'rejected','id'=>$category->id])}}"
-                                           class="btn btn-danger">
-                                            رفض
-                                            <i class="fa fa-close"> </i>
+                                           class="btn btn-danger btn-sm" title="رفض">
+
+                                            <i class="fa fa-ban"> </i>
                                         </a>
                                     </div>
                                     <div class="col-md-6">
                                         <a href="{{route('admin.events.change_status',['status'=>'compleated','id'=>$category->id])}}"
-                                           class="btn btn-success">اكتمل الحجز
+                                           class="btn btn-success btn-sm" title="اكتمل الحجز">
                                             <i class="fa fa-check"> </i>
                                         </a>
                                     </div>
                                 @elseif($category->booking_status  == 'rejected')
                                     <div class="col-md-6">
                                         <a href="{{route('admin.events.change_status',['status'=>'accepted','id'=>$category->id])}}"
-                                           class="btn btn-success">موافقة
+                                           class="btn btn-success btn-sm" title="موافقة">
                                             <i class="fa fa-check"> </i>
                                         </a>
                                     </div>
