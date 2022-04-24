@@ -19,24 +19,30 @@ use App\Http\Controllers\TrafficsController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\ReservationController;
-
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\MenuLinkController;
+use App\Http\Controllers\FileController;
 
 Auth::routes();
-//Route::get('/', function () {return view('front.index');})->name('home');
-
 
 Route::prefix('admin')->middleware(['auth', 'CheckRole:ADMIN', 'ActiveAccount'])->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 
 
     //Route::get('/profile',[AdminController::class,'upload_image']);
-
+    Route::resource('files',FileController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::resource('contacts', ContactController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::resource('venues', VenuesController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::resource('events', EventsController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::get('events/change_status/{status}/{id}', [EventsController::class, 'change_status'])->name('events.change_status')->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::resource('users', UserController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
     Route::resource('articles', ArticleController::class);
+    Route::resource('pages',PageController::class);
+    Route::resource('menus',MenuController::class);
+    Route::post('menu-links/get-type',[MenuLinkController::class,'getType'])->name('menu-links.get-type');
+    Route::post('menu-links/order',[MenuLinkController::class,'order'])->name('menu-links.order');
+    Route::resource('menu-links',MenuLinkController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('system-calendar', CalendarController::class);
     Route::resource('redirections', RedirectionController::class)->middleware(['CheckRole:ADMIN|EDITOR']);
@@ -72,18 +78,15 @@ Route::prefix('admin')->middleware(['auth', 'CheckRole:ADMIN', 'ActiveAccount'])
 
 Route::get('blocked', [HelperController::class, 'blocked_user'])->name('blocked');
 Route::get('robots.txt', [HelperController::class, 'robots']);
-Route::get('manifest.json', [HelperController::class, 'manifest']);
+Route::get('manifest.json',[HelperController::class,'manifest'])->name('manifest');
 Route::get('sitemap.xml', [SiteMapController::class, 'sitemap']);
 Route::get('sitemaps/links', [SiteMapController::class, 'custom_links']);
 Route::get('sitemaps/{name}/{page}/sitemap.xml', [SiteMapController::class, 'viewer']);
 
 
 //pages
-Route::view('about', 'front.pages.about');
 Route::view('privacy', 'front.pages.privacy');
-Route::view('terms', 'front.pages.terms');
-Route::view('contact', 'front.pages.contact');
-
+Route::view('contact','front.pages.contact')->name('contact');
 Route::get('article/{article}', [HomeController::class, 'article'])->name('article.show');
 Route::get('blog', [HomeController::class, 'blog'])->name('blog');
 Route::post('contact', [HomeController::class, 'contact_post'])->name('contact-post');
