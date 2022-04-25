@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="about-us" id="about-us">
+    <div class="about" id="about">
         <div class="container">
             <div class="row align-items-center gx-0 justify-content-center">
                 <div class="col-lg order-lg-first order-last">
@@ -49,13 +49,9 @@
                 </div>
                 <div class="col-lg">
                     <div class="text">
-                        <h2>عن قولاتو والخدمات</h2>
+                        <h2>عن ملاعبكم</h2>
                         <p>
-                            قولاتو يقدم لملاك الملاعب والأكاديميات العديد من الخدمات المميزة،
-
-                            مثل تسويقهم لمئات الآلاف من اللاعبين، وتسهيل كافة الأعمال التشغيلية والإدارية لهم.
-
-                            كما يساهم قولاتو في تحسين تجربة العملاء وتوفير الخيارات المناسبة لهم بكل سهولة.
+                            {!! settings()->about_page  !!}
                         </p>
                     </div>
                 </div>

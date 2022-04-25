@@ -38,7 +38,7 @@
 				<tbody>
 					@foreach($data as $category)
 					<tr>
-                        <td><img style="width: 150px; height: 150px;" class="img-thumbnail" src="{{$category->image_path}}"></td>
+                        <td><img style="width: 100px; height: 100px;" class="img-thumbnail" src="{{$category->image_path}}"></td>
 						<td>{{$category->name}}</td>
 						<td>{{$category->address}}</td>
 						<td style="width: 180px;">

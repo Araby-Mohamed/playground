@@ -7,7 +7,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>منصة قولاتو</title>
+    <title>{{settings()->website_name}}</title>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/libs/bootstrap.min.css"/>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/libs/all.min.css"/>
     <link rel="stylesheet"
@@ -29,10 +29,10 @@
                             <a class="nav-link" href="{{route('home')}}">الرئيسية</a>
                         </li>
                         <li class="nav-item order-4">
-                            <a class="nav-link" href="{{url('about')}}">عن قولاتو</a>
+                            <a class="nav-link" href="#" data-scroll="#about">عن ملاعبكم</a>
                         </li>
                         <li class="nav-item order-2">
-                            <a class="nav-link" href="#" data-scroll="#playgrounds">ملاعب</a>
+                            <a class="nav-link" href="#" data-scroll="#about">ملاعب</a>
                         </li>
                         <li class="nav-item order-3">
                             <a class="nav-link" href="#" data-scroll="#academies">أكاديميات</a>

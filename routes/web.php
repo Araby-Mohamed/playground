@@ -87,6 +87,7 @@ Route::get('sitemaps/{name}/{page}/sitemap.xml', [SiteMapController::class, 'vie
 //pages
 Route::view('privacy', 'front.pages.privacy');
 Route::view('contact','front.pages.contact')->name('contact');
+Route::get('page/{page}',[HomeController::class,'page'])->name('page.show');
 Route::get('article/{article}', [HomeController::class, 'article'])->name('article.show');
 Route::get('blog', [HomeController::class, 'blog'])->name('blog');
 Route::post('contact', [HomeController::class, 'contact_post'])->name('contact-post');
