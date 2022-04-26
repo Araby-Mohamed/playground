@@ -3,7 +3,7 @@
     <div class="header" id="home">
         <div class="container">
             <div class="row gx-0">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="info">
                         <h2 style="text-align: center; color: green;">الشروط والاحكام</h2>
                         <br>
@@ -11,9 +11,6 @@
                          {!! settings()->terms_page  !!}
                      </p>
                     </div>
-                </div>
-                <div class="col-lg-4 text-center d-none d-lg-block">
-                    <img src="{{url('/')}}/new_front/img/header-iPhone.png" alt=""/>
                 </div>
             </div>
         </div>
