@@ -33,6 +33,7 @@ class VenueRequest extends FormRequest
                 Rule::unique('venues', 'name')->ignore($this->route('venue'))
             ],
             'address'=>"nullable|string|max:191",
+            'cost'=>"required|numeric|min:0",
             'details'=>"nullable|string",
             'image' => [
                 'nullable',

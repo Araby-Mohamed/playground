@@ -86,19 +86,19 @@
             @endforeach
         </div>
     @endif
-@yield('content')
+    @yield('content')
     <div class="contact-us">
         <div class="container">
             <div class="row gy-lg-0 gy-5 px-5 px-sm-2">
                 <div class="col-lg-3 col-sm-6">
                     <h2>العنوان</h2>
                     <ul class="list-unstyled">
-                        <li>المملكة العربية السعودية - الرياض</li>
+                        <li>{{settings()->address}}</li>
                         <li>
-                            <bdi>+966563319949</bdi>
+                            <bdi>{{settings()->phone}}</bdi>
                         </li>
                         <li>
-                            <bdi>info@GolatoApp.com</bdi>
+                            <bdi>{{settings()->contact_email}}</bdi>
                         </li>
                     </ul>
                 </div>
@@ -114,12 +114,12 @@
                     <p> تجدنا في وسائل التواصل الإجتماعي</p>
                     <ul class="social-media list-unstyled">
                         <li>
-                            <a href="https://twitter.com/golatoapp"> <img src="{{url('/')}}/new_front/img/twitter.svg"
+                            <a href="{{settings()->twitter_link}}"> <img src="{{url('/')}}/new_front/img/twitter.svg"
                                                                           alt=""/></a>
                         </li>
-                    <!--<li>
-                            <a href="#"> <img src="{{url('/')}}/new_front/img/facebook.svg" alt="" /></a>
-                        </li>-->
+                        <li>
+                            <a href="{{settings()->facebook_link}}"> <img src="{{url('/')}}/new_front/img/facebook.svg" alt="" /></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -130,14 +130,14 @@
             <div class="row align-items-center justify-content-between">
                 <ul class="col-md-3 col-6 col-lg-2 social-media list-unstyled">
                     <li>
-                        <a href="https://twitter.com/golatoapp"> <i class="fab fa-twitter"></i></a>
+                        <a href="{{settings()->twitter_link}}"> <i class="fab fa-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="https://instagram.com/golatoapp"> <i class="fab fa-instagram"></i></a>
+                        <a href="{{settings()->instagram_link}}"> <i class="fab fa-instagram"></i></a>
                     </li>
-                    <!--<li>
-                        <a href="#"> <i class="fab fa-facebook-f"></i></a>
-                    </li>-->
+                    <li>
+                        <a href="{{settings()->facebook_link}}"> <i class="fab fa-facebook-f"></i></a>
+                    </li>
                 </ul>
                 <div class="copyright col-lg-8 text-lg-center col-md">
                     جميع الحقوق محفوظة.
@@ -200,7 +200,8 @@
                                    data-val-required="The PhoneNumber field is required." name="start_time" value=""/>
                             <label for="phone" class="form-label require">وقت الحجز</label>
                         </div>
-                        <label for="phone" class="form-label require">مبلغ حجز الملعب : </label> <span style="color: green;">{{settings()->reservation_price}}</span>
+                        <label for="phone" class="form-label require">مبلغ حجز الملعب : </label> <span
+                            style="color: green;">{{settings()->reservation_price}}</span>
                         @php $venues = \App\Models\Venue::all(); @endphp
                         <h3>اختر ملعب</h3>
                         <div class="form-floating row">
@@ -226,16 +227,22 @@
                 <div class="sign-in">
                     <i class="far fa-user"></i>
                     <h3>لحجز ملعب يرجى تسجيل الدخول اولا</h3>
-                    <form  method="POST" action="{{route('customer.login')}}">
+                    <form method="POST" action="{{route('customer.login')}}">
                         @csrf
-                        <div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>
-                            </ul></div>
+                        <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
+                            <ul>
+                                <li style="display:none"></li>
+                            </ul>
+                        </div>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required data-val="true" data-val-required="The PhoneNumber field is required." name="phone" value="" />
+                            <input type="text" class="form-control" id="phone" placeholder="رقم الجوال" required
+                                   data-val="true" data-val-required="The PhoneNumber field is required." name="phone"
+                                   value=""/>
                             <label for="phone" class="form-label require">رقم الجوال</label>
                         </div>
                         <div class="form-floating">
-                            <input class="form-control" id="password" type="password" placeholder="كلمة المرور" required data-val="true" data-val-required="The Password field is required." name="password" />
+                            <input class="form-control" id="password" type="password" placeholder="كلمة المرور" required
+                                   data-val="true" data-val-required="The Password field is required." name="password"/>
                             <label for="password" class="form-label require">كلمة المرور</label>
                         </div>
                         <button type="submit">تسجيل الدخول</button>

@@ -13,6 +13,17 @@
     <div class="col-12 p-3 row">
         <div class="col-12 col-lg-6 p-2">
             <div class="col-12">
+                سعر الساعة
+            </div>
+            <div class="col-12 pt-3">
+                <input type="number" min="0" step="any" name="cost" required class="form-control"
+                       value="{{ old('cost', $data->cost ?? '') }}">
+            </div>
+        </div>
+    </div>
+    <div class="col-12 p-3 row">
+        <div class="col-12 col-lg-6 p-2">
+            <div class="col-12">
                 العنوان
             </div>
             <div class="col-12 pt-3">

@@ -340,24 +340,24 @@
             </div>
         </div>
     </div>-->
-    <div class="container" id="contacts">
-        <div class="acad-stad">
-            <div class="bg-color"></div>
-            <div class="row">
-                <div class="col-lg-7">
-                    <h2>عندك ملعب أو اكاديمية؟</h2>
-                    <p>
-                        قولاتو خيارك الأمثل والأسهل لإدارة مشروعك بشكل كامل، جرب قولاتو مجاناً!
-                    </p>
-                </div>
-                <div class="col-lg align-self-center">
-                    <ul>
-                        <li class="stad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل ملعبك</a></li>
-                        <li class="acad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل أكاديميتك </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="container" id="contacts">--}}
+{{--        <div class="acad-stad">--}}
+{{--            <div class="bg-color"></div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-7">--}}
+{{--                    <h2>عندك ملعب أو اكاديمية؟</h2>--}}
+{{--                    <p>--}}
+{{--                        قولاتو خيارك الأمثل والأسهل لإدارة مشروعك بشكل كامل، جرب قولاتو مجاناً!--}}
+{{--                    </p>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg align-self-center">--}}
+{{--                    <ul>--}}
+{{--                        <li class="stad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل ملعبك</a></li>--}}
+{{--                        <li class="acad"><a href="https://api.whatsapp.com/send/?phone=966502610049">سجل أكاديميتك </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection
