@@ -14,6 +14,8 @@
           href="{{url('/')}}/new_front/unpkg.com/flickity%402.3.0/dist/flickity.min.css"/>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/main.min.css"/>
     <link rel="stylesheet" href="{{url('/')}}/new_front/css/main-ar.min.css"/>
+    <link rel="icon" type="image/png" href="{{ settings()->website_icon() }}" />
+
 </head>
 <body>
 <div class="overflow-hidden">

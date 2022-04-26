@@ -37,7 +37,7 @@ $page_image= isset($page_image)&&$page_image !=null?$page_image:$website_setting
 $page_keywords= isset($seo_key_words)&&$seo_key_words !=null? $seo_key_words:"";
 $website_settings['canonical']= isset($canonical) && $canonical!=null ? $canonical:$website_settings['canonical'];
 @endphp
-<title>{{$page_title}}</title>
+<title>{{ settings()->website_name }}</title>
 <!---
 وَما نَيلُ المَطالِبِ بِالتَمَنّي وَلَكِن تُؤخَذُ الدُنيا غِلاباوَ
 ما اِستَعصى عَلى قَومٍ مَن الٌإِذا الإِقدامُ كانَ لَهُم رِكابا
