@@ -147,7 +147,7 @@
                     . &copy; 2017
                     - 2022.
                     |
-                    <a href="Terms.html">الشروط والاحكام </a>
+                    <a href="{{route('terms')}}">الشروط والاحكام </a>
                 </div>
                 <div class="languages col-lg-2 col-6 col-md-3">
                     <div class="btn-group dropup">

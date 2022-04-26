@@ -91,7 +91,7 @@ Route::get('page/{page}',[HomeController::class,'page'])->name('page.show');
 Route::get('article/{article}', [HomeController::class, 'article'])->name('article.show');
 Route::get('blog', [HomeController::class, 'blog'])->name('blog');
 Route::post('contact', [HomeController::class, 'contact_post'])->name('contact-post');
-
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 //front page
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

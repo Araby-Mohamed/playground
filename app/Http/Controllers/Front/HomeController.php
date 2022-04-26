@@ -19,6 +19,10 @@ class HomeController extends Controller
 
         return view('front.index');
     }
+    public function terms()
+    {
+        return view('front.terms');
+    }
 
     public function contact_post(Request $request)
     {
